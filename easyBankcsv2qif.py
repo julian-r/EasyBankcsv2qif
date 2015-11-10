@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/bin/env python2
 '''
 TODO: fill me
 
@@ -68,7 +68,7 @@ class Transaction(object):
         self.description = description
         self.date = date
         self.valutadate = valutadate
-        self.amount = amount
+        self.amount = amount.replace(',','.')
         self.currency = currency
         self.parseDescription()
 
@@ -203,7 +203,7 @@ class Transaction(object):
 
         
     def getQIFstr(self):
-        ret = 'D{}\n'.format(self.date) + \
+        ret = 'D{}\n'.format(self.valutadate) + \
               'T{}\n'.format(self.amount) + \
               'M{}\n'.format(self.memo)
 
